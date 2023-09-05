@@ -15,7 +15,7 @@ module.exports = {
 ```
 Add the following dependencies:
 ```
-npm i --save-dev jest @babel/preset-env @babel/preset-react @testing-library/react @testing-library/jest-dom jest-svg-transformer identity-obj-proxy jest-environment-jsdom
+npm i --save-dev jest @babel/preset-env @babel/preset-react @testing-library/react @testing-library/jest-dom jest-svg-transformer identity-obj-proxy jest-environment-jsdom @types/jest
 ```
 Create a `.babelrc` file and add the following configuration
 ```
@@ -50,9 +50,13 @@ Create the `setupTests.js` file and add the following code
 ```
 import "@testing-library/jest-dom";
 ```
-### Optional
-If you want to add snapshot testing, add the `react-test-renderer` dependency
-
+Add the jest types to the `tsconfig.json`
+```
+"compilerOptions": {
+  ...,
+  "types": ["@types/jest"]
+}
+```
 Finally, start adding test files e.g. `App.test.tsx`
 ```
 import React from 'react';
@@ -70,3 +74,5 @@ test('Renders the main page', () => {
 });
 ```
 And run them with `npm run test`
+### Optional
+If you want to add snapshot testing, add the `react-test-renderer` dependency

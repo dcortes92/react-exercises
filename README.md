@@ -76,3 +76,6 @@ test('Renders the main page', () => {
 And run them with `npm run test`
 ### Optional
 If you want to add snapshot testing, add the `react-test-renderer` dependency
+
+## Acknowledgment
+This was taken from Zafer Ayan's [article](https://zaferayan.medium.com/how-to-setup-jest-and-react-testing-library-in-vite-project-2600f2d04bdd) on medium.

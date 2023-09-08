@@ -1,8 +1,15 @@
 import './App.css'
-import { useState, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import { Form } from './components/Form'
 import Books from './books';
-import { Book } from './components/Book';
+import { Book, IBookProps } from './components/Book';
+
+function* IdGenerator() {
+  let id = 1;
+  while (true) {
+    yield id++
+  }
+};
 
 function App() {
   const [formState, setFormState] = useState({
@@ -12,6 +19,27 @@ function App() {
     year: ''
   });
 
+  const [books,] = useState<IBookProps[]>(Books);
+  const [filteredBooks, setFilteredBooks] = useState<IBookProps[]>([]);
+  const ids = IdGenerator();
+
+  const areFiltersEmpty = () => Object.values(formState).every(value => value.trim().length === 0);
+  const hasFilters = () => Object.values(formState).some(value => value.trim().length > 0)
+
+  useEffect(() => {
+    const { title, author, country, year } = formState;
+    if (areFiltersEmpty()) {
+      setFilteredBooks([]);
+    } else {
+      const filtered = books
+        .filter(book => book.title.toLocaleLowerCase().includes(title.toLocaleLowerCase()))
+        .filter(book => book.author.toLocaleLowerCase().includes(author.toLocaleLowerCase()))
+        .filter(book => book.country.toLocaleLowerCase().includes(country.toLocaleLowerCase()))
+        .filter(book => book.year.toString().includes(year))
+      setFilteredBooks(filtered);
+    }
+  }, [formState])
+
   const onFormFieldChange = (event: ChangeEvent<HTMLInputElement>, field: string) => {
     setFormState({
       ...formState,
@@ -20,10 +48,14 @@ function App() {
   };
 
   const renderBooks = () => {
-    if(Books.length > 0) {
-      return Books.map((book) => (<Book {...book} />))
+    const booksToRender = hasFilters() ? filteredBooks : books;
+    if (booksToRender.length > 0) {
+      return booksToRender.map((book) => {
+        const id = ids.next();
+        return <Book key={`book-${id.value}`} {...book} />;
+      });
     } else {
-      return <p>No books found.</p>
+      return <p style={{flexBasis: '100%'}}>No books found. Try adjusting your filter criteria.</p>
     }
   }
 

@@ -1,4 +1,4 @@
-interface IBookProps {
+export interface IBookProps {
   author: string;
   country: string;
   imageLink: string;

@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -46,10 +49,29 @@
   justify-content: space-between;
 }
 
-.Form > div {
+.Form>div {
   margin: 10px;
 }
 
-.Form > div > label > span {
+.Form>div>label>span {
   margin-right: 5px;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Book {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.Book>img {
+ width: 120px;
+}
+
+.Book>figcaption>p {
+  margin: 0;
 }

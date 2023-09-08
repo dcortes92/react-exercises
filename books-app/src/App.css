@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+.Form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form > div {
+  margin: 10px;
+}
+
+.Form > div > label > span {
+  margin-right: 5px;
+}

@@ -8,6 +8,6 @@ test('demo', () => {
 
 test('Renders the main page', () => {
   render(<App />);
-  const title = screen.getByText(/Click on the Vite and React logos to learn more/i);
+  const title = screen.getByText(/Find Books/i);
   expect(title).toBeInTheDocument();
 });

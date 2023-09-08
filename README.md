@@ -15,7 +15,7 @@ module.exports = {
 ```
 Add the following dependencies:
 ```
-npm i --save-dev jest @babel/preset-env @babel/preset-react @testing-library/react @testing-library/jest-dom jest-svg-transformer identity-obj-proxy jest-environment-jsdom @types/jest
+npm i --save-dev jest @babel/preset-env @babel/preset-react @testing-library/react @testing-library/jest-dom jest-svg-transformer identity-obj-proxy jest-environment-jsdom @types/jest @babel/preset-typescript
 ```
 Create a `.babelrc` file and add the following configuration
 ```

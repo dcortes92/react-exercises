@@ -54,7 +54,7 @@ Add the jest types to the `tsconfig.json`
 ```
 "compilerOptions": {
   ...,
-  "types": ["@types/jest"]
+  "types": ["@types/jest", "@testing-library/jest-dom"]
 }
 ```
 Finally, start adding test files e.g. `App.test.tsx`
